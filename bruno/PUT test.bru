@@ -1,0 +1,19 @@
+meta {
+  name: PUT test
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/api/data/김멋사
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {"data":"최멋사"}
+}

@@ -1,0 +1,19 @@
+meta {
+  name: POST test
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:8080/api/data
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {"data":"새로운값"}
+}

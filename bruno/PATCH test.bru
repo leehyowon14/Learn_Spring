@@ -1,0 +1,19 @@
+meta {
+  name: PATCH test
+  type: http
+  seq: 6
+}
+
+patch {
+  url: http://localhost:8080/api/data/김멋사
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {"data":"조금멋사"}
+}
