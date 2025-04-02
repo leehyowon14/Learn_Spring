@@ -20,10 +20,20 @@ public class DataController {
         return ResponseEntity.ok(Map.of("message", keyword + "에 대한 검색 요청이 발생하였습니다."));
     }
 
+//    @PostMapping
+//    public ResponseEntity<Map<String, String>> createData(@RequestBody Map<String, String> body) {
+//        return ResponseEntity.status(HttpStatus.CREATED).body(
+//                Map.of("message", body.get("data") + "에 대한 생성 요청이 발생하였습니다."));
+//    }
+
     @PostMapping
-    public ResponseEntity<Map<String, String>> createData(@RequestBody Map<String, String> body) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(
-                Map.of("message", body.get("data") + "에 대한 생성 요청이 발생하였습니다."));
+    public ResponseEntity<UserResponse> saveData(@RequestBody UserRequest request) {
+        String username = request.getUsername();
+        String userpart = request.getUserpart();
+
+        User user = new User(username, userpart);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new UserResponse(user.getUsername(), user.getUserpart(), "성공했습니다."));
+
     }
 
     @PutMapping("/{data}")
@@ -41,7 +51,7 @@ public class DataController {
     }
 
     @DeleteMapping("/{data}")
-    public ResponseEntity<Map<String, String>> deleteData(@PathVariable String data) {
+    public ResponseEntity<Map<String, String>> deleteData (@PathVariable String data) {
         return ResponseEntity.ok(Map.of("message", data + "에 대한 삭제 요청이 발생하였습니다."));
     }
 }
